@@ -2,14 +2,13 @@ import java.util.*;
 
 class Solution {
     public String solution(String s) {
-        String answer = "";
-        String[] str = s.split("");
-        Arrays.sort(str, Collections.reverseOrder());
+        //String s 를 char Array로 생성
+        char[] charArr = s.toCharArray();
         
-        for(String sReverseChar : str) {
-            answer += sReverseChar;
-        }
+        // 오름차순 정렬
+        Arrays.sort(charArr);
         
-        return answer;
+        // 텅 빈 StringBuilder 생성 후 charArr를 내림차순으로 정렬 후 string으로 변환
+        return new StringBuilder().append(charArr).reverse().toString();
     }
 }
