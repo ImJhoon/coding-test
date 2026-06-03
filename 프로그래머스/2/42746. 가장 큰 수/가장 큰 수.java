@@ -4,7 +4,7 @@ class Solution {
     public String solution(int[] numbers) {
         String[]  strNumbers = new String[numbers.length];
         String answer = "";
-        int zeroCount = 0;
+        
         for (int i = 0; i < numbers.length; i++){
             strNumbers[i] = String.valueOf(numbers[i]);
         }
@@ -13,14 +13,10 @@ class Solution {
            
         for (String s : strNumbers){
             answer += s;
-            if (s.equals("0")){
-                zeroCount++;
-                }
             }
         
-        System.out.println(zeroCount);
-        
-        if (zeroCount == strNumbers.length){
+        // 첫번째 수가 0일 경우에 모든 리스트 값이 반드시 0
+        if (answer.charAt(0) == '0'){
             return "0";
         }
         
