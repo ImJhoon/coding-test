@@ -13,9 +13,9 @@ class Solution {
             }
             
             if (idx % 2 == 0) {
-                sb.append(String.valueOf(s.charAt(i)).toUpperCase());
+                sb.append(Character.toUpperCase(s.charAt(i)));
             } else {
-                sb.append(String.valueOf(s.charAt(i)).toLowerCase());
+                sb.append(Character.toLowerCase(s.charAt(i)));
             }
             
             idx++;
