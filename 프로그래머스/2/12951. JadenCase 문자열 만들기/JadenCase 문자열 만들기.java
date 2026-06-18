@@ -15,7 +15,7 @@ class Solution {
                 continue;
             }
             
-            if (findBlank == true){
+            if (findBlank == true) {
                 answer += (String.valueOf(c)).toUpperCase();
                 findBlank = false;
             } else {
@@ -23,7 +23,6 @@ class Solution {
             }
         }
         
-        System.out.println(answer);
         return answer;
     }
 }
