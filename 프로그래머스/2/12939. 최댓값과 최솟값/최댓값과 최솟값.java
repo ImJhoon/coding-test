@@ -8,11 +8,12 @@ class Solution {
         // System.out.println(Arrays.toString(arr));
         
         for (String str : arr) {
-            if (max < Integer.parseInt(str)){
-                max = Integer.parseInt(str);
+            int currentNum = Integer.parseInt(str);
+            if (max < currentNum){
+                max = currentNum;
             }
-            if (min > Integer.parseInt(str)) {
-                min = Integer.parseInt(str);
+            if (min > currentNum) {
+                min = currentNum;
             }
         }
         
