@@ -1,38 +1,50 @@
-import java.util.*;
-
-public class Solution {
-public int solution(int[] diffs, int[] times, long limit) {
-        int answer = 1; // 숙련도 1가 최소
+class Solution {
+    public int solution(int[] diffs, int[] times, long limit) {
+        // diffs : 풀 퍼즐의 레벨 배열 , times : 풀 퍼즐의 시간 배열, limit : 퍼즐을 풀 제한 시간
+        // level : 현재 내 레벨
+        // time_cur : 현재 퍼즐의 소요 시간 , time_prev : 이전 퍼즐의 소요 시간
+        
+        // [상황]
+        // diff <= level 이면 퍼즐을 틀리지 않고 time_cur 만큼의 시간을 사용
+        // diff > level 이면 퍼즐을 diff - level 번 틀림
+        // 퍼즐을 틀릴 때마다 time_cur만큼의 시간을 사용 - > 이전 퍼즐을 다시 풀 때는 난이도에 상관없이 틀리지 않음
+        // diff - level 번 틀린 이후에 다시 퍼즐을 풀면 time_cur 만큼의 시간을 사용하여 퍼즐 해결
+        // 즉 (time_cur + time_prev) * (diff - level) + time_cur 
+        
+        // [목표]
+        // limit 이내에서 퍼즐을 모두 해결하기 위한 숙련도의 최솟값을 구하라
+        int answer = 0;
         int left = 1;
         int right = 100_000;
-        while (left <= right) { // left > right
-            int mid = (left + right) / 2; // 중점을 구함
-            if (check(diffs, times, limit, mid)) {
-                answer = mid; // 임시로 mid를 답을 잡음
+        
+        while (left <= right) {
+            int mid = (left + right) / 2;
+            
+            if (canSolve(mid, diffs, times, limit)) {
+                answer = mid;
                 right = mid - 1;
-            } else  {
+            } else {
                 left = mid + 1;
             }
         }
-
+        
         return answer;
+        
     }
+    
+    private boolean canSolve(int level, int[] diffs, int times[], long limit){
+        long total = 0;   
+            
+        for (int i = 0; i < diffs.length; i++){ 
+            int diff = diffs[i];
+            int time_cur = times[i];
 
-    private boolean check(int[] diffs, int[] times, long limit, int i) {
-        long totalTime = times[0];
-        for (int j = 1; j < diffs.length; j++) {
-            long curTime = times[j]; // 0번째는 이미 넣어줌
-            if (diffs[j] <= i) {
-                totalTime += curTime;
+            if (diff <= level) {
+                total += time_cur;
             } else {
-                long count = diffs[j] - i; // 반복횟수
-                long prevTime = times[j - 1];
-                totalTime += count * (prevTime + curTime) + curTime;
-            }
-            if (totalTime > limit) {
-                return false;
+                total += (time_cur + times[i - 1]) * (diff - level) + time_cur;
             }
         }
-        return true;
+        return total <= limit;
     }
 }
