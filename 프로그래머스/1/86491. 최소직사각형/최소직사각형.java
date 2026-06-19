@@ -5,12 +5,10 @@ class Solution {
         int width = 0;
         int height = 0;
         int size = 0;
-        int max = 0;
-        int min = 0;
         
         for (int[] item : sizes) {
-            max = Math.max(item[0], item[1]);
-            min = Math.min(item[0], item[1]);
+            int max = Math.max(item[0], item[1]);
+            int min = Math.min(item[0], item[1]);
             
             item[0] = max;
             item[1] = min;
