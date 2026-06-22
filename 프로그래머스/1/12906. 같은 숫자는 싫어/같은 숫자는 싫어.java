@@ -22,7 +22,7 @@ public class Solution {
             
             index++;
         }
-    
+        
         
         return list.stream()
 	.mapToInt(Integer::intValue)
