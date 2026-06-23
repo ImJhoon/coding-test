@@ -11,7 +11,6 @@ class Solution {
             sum += Math.pow(3, ter.length() - i) * Integer.parseInt(String.valueOf(ter.charAt(ter.length() - i)));
         }
         
-        
         return sum;
     }
 }
