@@ -24,15 +24,18 @@ class Solution {
             }
         }
         
-        sb.append("0");
+//         sb.append("0");
             
-        System.out.println(sb.toString());
-        String tmp = sb.toString();
+//         System.out.println(sb.toString());
+//         String tmp = sb.toString();
         
-        for (int i = 1; i < tmp.length(); i++) {
-            sb.append(tmp.charAt(tmp.length() - 1 - i));
-        }
+        // for (int i = 1; i < tmp.length(); i++) {
+        //     sb.append(tmp.charAt(tmp.length() - 1 - i));
+        // }
         
-        return sb.toString();
+        String leftString = sb.toString();
+        String rightString = sb.reverse().toString();
+        
+        return leftString + "0" + rightString;
     }
 }
