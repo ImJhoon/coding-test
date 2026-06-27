@@ -20,7 +20,7 @@ class Solution {
             int currentFoodIndex = i;
             int currentFood = food[i];
             for (int j = 0; j < currentFood / 2; j++) {
-                sb.append(currentFoodIndex + "");
+                sb.append(currentFoodIndex);
             }
         }
         
