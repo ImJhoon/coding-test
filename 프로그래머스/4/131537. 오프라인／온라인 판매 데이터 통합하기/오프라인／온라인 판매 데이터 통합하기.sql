@@ -1,0 +1,22 @@
+-- 코드를 입력하세요
+SELECT *
+FROM
+(
+    SELECT 
+        SALES_DATE,
+        PRODUCT_ID,
+        USER_ID,
+        SALES_AMOUNT
+    FROM 
+        ONLINE_SALE
+    UNION ALL
+    SELECT 
+        SALES_DATE,
+        PRODUCT_ID,
+        NULL AS USER_ID,
+        SALES_AMOUNT
+    FROM 
+        OFFLINE_SALE
+) A
+WHERE MONTH(SALES_DATE) = '03' AND YEAR(SALES_DATE) = '2022'
+ORDER BY SALES_DATE, PRODUCT_ID, USER_ID;
