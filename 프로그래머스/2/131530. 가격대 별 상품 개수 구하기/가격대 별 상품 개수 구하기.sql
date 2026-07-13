@@ -1,0 +1,29 @@
+-- PRODUCT
+SELECT * FROM PRODUCT; # product_id	product_code	price
+-- PRICE_GROUP	PRODUCTS
+SELECT 
+    '' AS PRICE_GROUP,
+    '' AS PRODUCTS
+FROM
+    PRODUCT;
+    
+SELECT 
+    -- PRICE / 10000 AS PRICE_GROUP,
+    FLOOR(PRICE / 10000) AS PRICE_GROUP,
+    -- 만원 단위이므로 10000으로 나눈 뒤 아래를 절삭
+    '' AS PRODUCTS
+FROM
+    PRODUCT;    
+    
+SELECT
+    PRICE_GROUP,
+    COUNT(*) AS PRODUCTS
+FROM (
+    SELECT 
+        FLOOR(PRICE / 10000) * 10000 AS PRICE_GROUP
+    FROM
+        PRODUCT) P
+GROUP BY
+    PRICE_GROUP
+ORDER BY
+    PRICE_GROUP ASC;      
