@@ -1,0 +1,21 @@
+-- 코드를 작성해주세요
+# SELECT 
+#     ID, 
+#     AS CHILD_COUNT
+# FROM 
+#     ECOLI_DATA
+
+SELECT
+    ID,
+    IFNULL(ED2.CHILD_COUNT, 0) AS CHILD_COUNT
+FROM
+    ECOLI_DATA ED
+LEFT JOIN
+    (SELECT
+        PARENT_ID,
+        COUNT(*) AS CHILD_COUNT
+    FROM
+        ECOLI_DATA
+    GROUP BY
+        PARENT_ID) ED2
+ON ED.ID = ED2.PARENT_ID;
