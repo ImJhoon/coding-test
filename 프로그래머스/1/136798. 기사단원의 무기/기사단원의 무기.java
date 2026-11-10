@@ -11,23 +11,24 @@ import java.util.*;
 class Solution {
     public int solution(int number, int limit, int power) {
         int answer = 0;
-        
-        // 약수 구하기
+
         for (int i = 1; i <= number; i++) {
-            int tmp = 0;
-            for (int j = 1; j <= i; j++) {
+            int count = 0;
+
+            for (int j = 1; j * j <= i; j++) {
                 if (i % j == 0) {
-                    tmp++;
+                    count += (j * j == i) ? 1 : 2;
+                }
+
+                // 이미 제한을 넘었다면 더 셀 필요 없음
+                if (count > limit) {
+                    break;
                 }
             }
-            
-            if (tmp > limit) {
-                answer += power;
-            } else {
-                answer += tmp;
-            }
+
+            answer += (count > limit) ? power : count;
         }
-        
+
         return answer;
     }
 }
