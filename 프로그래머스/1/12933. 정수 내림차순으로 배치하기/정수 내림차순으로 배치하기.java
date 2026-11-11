@@ -13,9 +13,9 @@ class Solution {
                         .toArray();
         
         for (int digit : digits) {
-            sb.append(digit + "");
+            sb.append(digit);
         }
         
-        return Long.parseLong(String.valueOf(sb));
+        return Long.parseLong(sb.toString());
     }
 }
