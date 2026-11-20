@@ -20,7 +20,7 @@ class Solution {
             answerMap.put(want[i], number[i]);
         }
         
-        System.out.println("정답 : " + answerMap);
+        // System.out.println("정답 : " + answerMap);
         
         int count = 0;
         int sum = Arrays.stream(number)
