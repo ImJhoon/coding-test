@@ -23,11 +23,9 @@ class Solution {
         // System.out.println("정답 : " + answerMap);
         
         int count = 0;
-        int sum = Arrays.stream(number)
-                    .sum();
         int n = 0;
         
-        while(discount.length - n >= sum) {
+        while(discount.length - n >= 10) {
             Map<String, Integer> tryMap = new HashMap<>();
             
             int limit = 0;
