@@ -4,8 +4,8 @@ class Solution {
     public int solution(String s) {
         Deque<Character> rotation = new ArrayDeque<>();
         
-        for (char ch : s.toCharArray()) {
-            rotation.addLast(ch);
+        for (char a : s.toCharArray()) {
+            rotation.addLast(a);
         }
         
         int answer = 0;
@@ -13,32 +13,34 @@ class Solution {
             if (isValid(rotation)) {
                 answer++;
             }
+            
             rotation.addLast(rotation.removeFirst());
         }
+        
         return answer;
     }
     
-    private boolean isValid(Deque<Character> rotation) {
+    private boolean isValid(Deque<Character> deque) {
         Deque<Character> stack = new ArrayDeque<>();
         
-        for (char ch : rotation) {
-            switch (ch) {
-                case '(':
-                    stack.push(')');
+        for (char c : deque) {
+            switch(c) {
+                case '{':
+                    stack.push('}');
                     break;
                 case '[':
                     stack.push(']');
                     break;
-                case '{':
-                    stack.push('}');
+                case '(':
+                    stack.push(')');
                     break;
                 default:
-                    if (stack.isEmpty() || stack.pop() != ch) {
+                    if (stack.isEmpty() || stack.pop() != c) {
                         return false;
                     }
+                }
             }
-        }
-        
+                
         return stack.isEmpty();
     }
 }
