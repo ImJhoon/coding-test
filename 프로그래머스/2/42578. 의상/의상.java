@@ -1,20 +1,27 @@
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 class Solution {
     public int solution(String[][] clothes) {
-        Map<String, Integer> countByType = new HashMap<>();
-
-        for (String[] item : clothes) {
-            String type = item[1];
-            countByType.put(type, countByType.getOrDefault(type, 0) + 1);
+        
+        Map<String, Integer> countType = new HashMap<>();
+        
+        // 옷 종류 카운트
+        for (int i = 0; i < clothes.length; i++) {
+            countType.put(clothes[i][1], countType.getOrDefault(clothes[i][1], 0) + 1);
         }
-
-        int combinations = 1;
-        for (int count : countByType.values()) {
-            combinations *= count + 1;
+        
+        // System.out.println(countType);
+        
+        if (countType.size() == 1) {
+            return clothes.length;
         }
-
-        return combinations - 1;
+        
+        int answer = 1;
+        
+        for (String key : countType.keySet()) {
+            answer *= countType.get(key) + 1;
+        }
+        
+        return answer - 1;
     }
 }
